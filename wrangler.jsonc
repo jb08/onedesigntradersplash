@@ -5,11 +5,16 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "onedesigntradersplash",
+	"account_id": "86a1d09efe11e496a4267684fd1c95df",
 	"compatibility_date": "2026-02-10",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
-	"pages_build_output_dir": "./dist",
+	"main": "./dist/_worker.js",
+	"assets": {
+		"directory": "./dist/",
+		"binding": "ASSETS"
+	},
 	"observability": {
 		"enabled": true
 	}
