@@ -1,11 +1,140 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const boats = [
+	{ type: 'ILCA', title: 'ILCA #2', year: 2021, number: 'ILCA-2001', price: 7300.00 },
+	{ type: 'ILCA', title: 'ILCA #1', year: 2020, number: 'ILCA-2000', price: 7000.00 },
+	{ type: 'Melges15', title: 'Melges 15 #3', year: 2023, number: 'M15-1002', price: 16000.00 },
+	{ type: 'Melges15', title: 'Melges 15 #2', year: 2022, number: 'M15-1001', price: 15500.00 },
+	{ type: 'Melges15', title: 'Melges 15 #1', year: 2021, number: 'M15-1000', price: 15000.00 },
+];
 ---
 
 <Layout>
-	<Welcome />
+	<header>
+		<h1>Onedesigntrader</h1>
+		<p>Marketplace for one-design class dingy sailboats ⛵</p>
+	</header>
+
+	<main>
+		<div class="table-container">
+			<table>
+				<thead>
+					<tr>
+						<th>TYPE</th>
+						<th>TITLE</th>
+						<th>YEAR</th>
+						<th>NUMBER</th>
+						<th>PRICE</th>
+					</tr>
+				</thead>
+				<tbody>
+					{boats.map(boat => (
+						<tr>
+							<td>{boat.type}</td>
+							<td>{boat.title}</td>
+							<td>{boat.year}</td>
+							<td>{boat.number}</td>
+							<td>${boat.price.toFixed(2)}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	</main>
+
+	<footer>
+		<p>in development by <a href="https://jasonbrownsoftware.net/" target="_blank" rel="noopener noreferrer">https://jasonbrownsoftware.net/</a></p>
+	</footer>
 </Layout>
+
+<style>
+	header {
+		background: #2B4699;
+		color: white;
+		padding: 2rem 2rem 1.5rem;
+		text-align: left;
+	}
+
+	h1 {
+		margin: 0 0 0.5rem 0;
+		font-size: 1.75rem;
+		font-weight: 400;
+	}
+
+	header p {
+		margin: 0;
+		font-size: 1rem;
+		opacity: 0.95;
+	}
+
+	main {
+		padding: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.table-container {
+		background: white;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	thead {
+		background: #f8f9fa;
+	}
+
+	th {
+		text-align: left;
+		padding: 1rem 1.5rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: #6c757d;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	td {
+		padding: 1.25rem 1.5rem;
+		border-top: 1px solid #e9ecef;
+		color: #212529;
+	}
+
+	tbody tr:hover {
+		background: #f8f9fa;
+		cursor: pointer;
+	}
+
+	@media (max-width: 768px) {
+		th, td {
+			padding: 0.75rem 1rem;
+			font-size: 0.875rem;
+		}
+	}
+
+	footer {
+		text-align: center;
+		padding: 2rem;
+		color: #6c757d;
+		font-size: 0.875rem;
+	}
+
+	footer p {
+		margin: 0;
+	}
+
+	footer a {
+		color: #2B4699;
+		text-decoration: none;
+	}
+
+	footer a:hover {
+		text-decoration: underline;
+	}
+</style>
